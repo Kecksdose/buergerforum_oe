@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- For Flask PageDown -->
+    {% if request.path == "/addpost" %}
+      {{ pagedown.include_pagedown() }}
+    {% endif %}
+
+    <!-- Own CSS -->
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <title>Bürgerforum OE</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ url_for('index') }}">Bürgerforum OE</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li {% if request.path == "/" %} class="active" {% endif %}><a href="{{ url_for('index') }}">Aktuelles <span class="sr-only"></a></li>
+            <li {% if request.path == "/addpost" %} class="active" {% endif %}><a href="{{ url_for('addpost') }}">Posts</a></li>
+            <li class="dropdown">
+              <a href="{{ url_for('index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wir über uns<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ url_for('index') }}">Der Bürgergarten</a></li>
+                <li><a href="{{ url_for('index') }}">WLAN für OE</a></li>
+              </ul>
+            </li>
+            <li {% if request.path == "/imprint" %} class="active" {% endif %}><a href="{{ url_for('imprint') }}">Impressum</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><p class="nav navbar-text"><strong>Nächstes Bürgerforum:</strong> 06.08.2016<p></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <!-- Add footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Copyright &copy; 2016, Timon Schmelzer</p>
+      </div>
+    </footer>
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- My own js -->
+  </body>
+</html>
