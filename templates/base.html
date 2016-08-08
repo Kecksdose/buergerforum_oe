@@ -40,7 +40,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li {% if request.path == "/" %} class="active" {% endif %}><a href="{{ url_for('index') }}">Aktuelles <span class="sr-only"></a></li>
-            <li {% if request.path == "/addpost" %} class="active" {% endif %}><a href="{{ url_for('addpost') }}">Posts</a></li>
+            {% if session['logged_in'] %}
+              <li {% if request.path == "/addpost" %} class="active" {% endif %}><a href="{{ url_for('addpost') }}">Posts</a></li>
+            {% endif %}
             <li class="dropdown">
               <a href="{{ url_for('index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Wir über uns<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -51,6 +53,9 @@
             <li {% if request.path == "/imprint" %} class="active" {% endif %}><a href="{{ url_for('imprint') }}">Impressum</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            {% if session['logged_in'] %}
+              <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% endif %}
             <li><p class="nav navbar-text"><strong>Nächstes Bürgerforum:</strong> 06.08.2016<p></li>
           </ul>
         </div><!-- /.navbar-collapse -->

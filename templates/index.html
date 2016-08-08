@@ -8,22 +8,25 @@
   <div class="panel panel-success">
     <div class="panel-heading clearfix">
       <h3 class="panel-title pull-left">{{ post.headline }}</h3>
-      <div class="pull-right btn-group">
-        <form action="{{ url_for('update_entry', post_id=post._id) }}" method="POST" class="form-buttons">
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-          <input type="hidden" name="_method" value="UPDATE" />
-            <button type="button submit" class="btn btn-warning btn-xs">Bearbeiten
-              <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-            </button>
-        </form>
-        <form action="{{ url_for('delete_entry', post_id=post._id) }}" method="POST" class="form-buttons">
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-          <input type="hidden" name="_method" value="DELETE" />
-            <button type="button submit" class="btn btn-danger btn-xs">Löschen
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </button>
-        </form>
-      </div>
+      {% if session['logged_in'] %}
+      <!-- Manipulate entries -->
+        <div class="pull-right btn-group">
+          <form action="{{ url_for('update_entry', post_id=post._id) }}" method="POST" class="form-buttons">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="hidden" name="_method" value="UPDATE" />
+              <button type="button submit" class="btn btn-warning btn-xs">Bearbeiten
+                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+              </button>
+          </form>
+          <form action="{{ url_for('delete_entry', post_id=post._id) }}" method="POST" class="form-buttons">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="hidden" name="_method" value="DELETE" />
+              <button type="button submit" class="btn btn-danger btn-xs">Löschen
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+          </form>
+        </div>
+      {% endif %}
     </div>
     <div class="panel-body">
       <td>{{ post.content|markdown }}</td>

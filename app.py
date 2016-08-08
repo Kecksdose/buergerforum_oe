@@ -9,6 +9,8 @@ from forms import PostForm
 
 from bson.objectid import ObjectId
 
+import bcrypt
+
 import datetime
 
 app = Flask(__name__)
@@ -35,6 +37,8 @@ def imprint():
 
 @app.route('/addpost', methods=['GET', 'POST'])
 def addpost():
+    if not session.get('logged_in'):
+        return redirect('/')
     form = PostForm()
     if request.method == 'POST' and form.validate_on_submit():
         post = mongo.db.posts
@@ -76,9 +80,33 @@ def update_entry(post_id):
         session['post_id'] = post_id
         return redirect(url_for('addpost'))
     return redirect('/')
-    # old_post = mongo.db.posts.find_one({'_id': ObjectId(post_id)})
-    # return redirect(url_for('addpost', old_post=old_post))
-    # return redirect('/')
+
+
+@app.route('/anmelden', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        # Generating username/password once
+        # users = mongo.db.users
+        # hashed_pw = bcrypt.hashpw(request.form['password'].encode('utf-8'),
+        #                           bcrypt.gensalt())
+        # users.insert({'name': request.form['username'],
+        #               'password': hashed_pw})
+        user = mongo.db.users.find_one({'name': request.form['username']})
+        if user:
+            if bcrypt.hashpw(
+                request.form['password'].encode('utf-8'),
+                    user['password']) == user['password']:
+                    session['logged_in'] = True
+                    return redirect('/')
+        return 'Falsche Benutzername/Passwort-Kombination'
+
+    return render_template('anmelden.html')
+
+
+@app.route('/logout')
+def logout():
+    session['logged_in'] = None
+    return redirect('/')
 
 
 @app.route('/add')
