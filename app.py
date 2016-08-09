@@ -5,7 +5,7 @@ from flask_pagedown import PageDown
 from flask_misaka import Misaka
 from flask_wtf.csrf import CsrfProtect
 
-from forms import PostForm
+from forms import PostForm, RegisterAndLogin
 
 from bson.objectid import ObjectId
 
@@ -84,23 +84,33 @@ def update_entry(post_id):
 
 @app.route('/anmelden', methods=['GET', 'POST'])
 def register():
-    if request.method == 'POST':
-        # Generating username/password once
+    form = RegisterAndLogin()
+    if request.method == 'POST' and form.validate_on_submit():
+        # Generate username/password (once!)
         # users = mongo.db.users
         # hashed_pw = bcrypt.hashpw(request.form['password'].encode('utf-8'),
         #                           bcrypt.gensalt())
         # users.insert({'name': request.form['username'],
         #               'password': hashed_pw})
+        # return redirect('/')
         user = mongo.db.users.find_one({'name': request.form['username']})
         if user:
+            # Python 2
             if bcrypt.hashpw(
                 request.form['password'].encode('utf-8'),
-                    user['password']) == user['password']:
+                    user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
                     session['logged_in'] = True
                     return redirect('/')
+            # Python 3
+            # if bcrypt.hashpw(
+            #     request.form['password'].encode('utf-8'),
+            #         user['password']) == user['password']:
+            #         session['logged_in'] = True
+            #         return redirect('/')
         return 'Falsche Benutzername/Passwort-Kombination'
 
-    return render_template('anmelden.html')
+    return render_template('anmelden.html',
+                           form=form)
 
 
 @app.route('/logout')
@@ -117,4 +127,7 @@ def add():
 
 
 if __name__ == '__main__':
+    # Server
+    app.run(host='0.0.0.0')
+    # Locally
     app.run(debug=True)

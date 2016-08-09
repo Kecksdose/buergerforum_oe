@@ -5,9 +5,13 @@ from wtforms.validators import (Length, Required)
 
 
 class PostForm(Form):
-    headline = StringField('Überschrift',
+    headline = StringField('Ueberschrift',
                            [Required(), Length(min=0, max=140)])
     content = PageDownField('Text',
                             [Required(), Length(min=0, max=3000)])
     author = StringField('Autor',
                          [Required(), Length(min=0, max=50)])
+
+class RegisterAndLogin(Form):
+    username = StringField('Benutzername', [Required()])
+    password = StringField('Passwort', [Required()])

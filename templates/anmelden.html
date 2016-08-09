@@ -1,17 +1,10 @@
-<div class="container">
-  <div class="row">
-    <form method=POST action="">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
-      <div class=form-group>
-        <label for="exampleInputName">Benutzername</label>
-        <input type="text" class="form-control" name="username" placeholder="Benutzername">
-      </div>
-      <div class=form-group>
-        <label for="exampleInputPassword">Passwort</label>
-        <input type="password" class="form-control" name="password" placeholder="Passwort">
-      </div>
-      <button type="submit" class="btn btn-primary btn-block">Anmelden</button>
-    </form>
-    <br>
-  </div>
-</div>
+{% extends 'base.html' %}
+{% import '_macros.html' as macros %}
+{% block content %}
+  <h1>Melde dich hier an, um Posts verfassen zu können.</h1><br>
+  {% call macros.render_form(form, action_url='', action_text='Anmelden', btn_class='btn btn-default btn-success') %}
+    {{ form.hidden_tag() }}
+    {{ macros.render_field(form.username, label_visible=True, type='text') }}
+    {{ macros.render_field(form.password, label_visible=True, type='password') }}
+  {% endcall %}
+{% endblock %}
