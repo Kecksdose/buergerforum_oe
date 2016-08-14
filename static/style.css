@@ -8,10 +8,10 @@
     margin-top: 20px;
     height: 400px;
     background-image: url(/static/images/oe_main.jpg);
-    background-position: 0% 25%;
+    background-position: 50% 25%;
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 5px;
 }
