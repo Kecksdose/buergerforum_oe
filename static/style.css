@@ -3,3 +3,15 @@
 
 .form-buttons {display: inline-block;}
 
+.jumbotron {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 400px;
+    background-image: url(/static/images/oe_main.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
