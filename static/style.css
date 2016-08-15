@@ -12,6 +12,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     color: white;
+    text-shadow: #d9534f 0.3em 0.3em 0.3em;
     text-align: center;
     padding-top: 5px;
 }
