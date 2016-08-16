@@ -4,8 +4,55 @@
   <h1>Erstelle einen Post!</h1><br>
   {% call macros.render_form(form, action_url='', action_text='Posten', btn_class='btn btn-default btn-success') %}
     {{ form.hidden_tag() }}
-    {{ macros.render_field(form.headline, label_visible=True, type='text') }}
-    {{ macros.render_field(form.author, label_visible=True, type='text') }}
-    {{ macros.render_field(form.content, label_visible=True, type='text', rows=10) }}
+    {{ macros.render_field(form.headline, label_visible=True, type='text', placeholder='Gib hier den Titel des Artikels ein.') }}
+    {{ macros.render_field(form.main_image, label_visible=True, type='text', placeholder='Waehle eine Bild-URL. Wenn nicht, wird das Standard Buergerforum Oer-Erkenschwick Logo gewaehlt.') }}
+    {{ macros.render_field(form.author, label_visible=True, type='text', placeholder='Wer hat den Artikel verfasst?') }}
+    {{ macros.render_field(form.content, label_visible=True, type='text', rows=10, placeholder='Waehrend du den Text schreibst, siehst du weiter unter, wie er spaeter aussehen wird. Nicht vergessen: Dieser Text unterstuetzt Markdown (Erklaerung dazu noch weiter unten)!') }}
   {% endcall %}
+  <hr>
+  <h1> Markdown-Anleitung </h1><br>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Vorher</th>
+      <th>Nachher</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#Riesig</td>
+        <td><h1>Riesig<h1></td>
+      </tr>
+      <tr>
+        <td>##Gross</td>
+        <td><h2>Gross<h2></td>
+      </tr>
+      <tr>
+        <td>###Etwas kleiner</td>
+        <td><h3>Etwas kleiner<h3></td>
+      </tr>
+      <tr>
+        <td>[Google link](https://www.google.de)</td>
+        <td><a href="https://www.google.de">Google link</a></td>
+      </tr>
+      <tr>
+        <td>*kursiv*</td>
+        <td><i>kursiv</i></td>
+      </tr>
+      <tr>
+        <td>**fett**</td>
+        <td><strong>fett</strong></td>
+      </tr>
+      <tr>
+        <td>***fett und kursiv***</td>
+        <td><strong><i>fett und kursiv</i></strong></td>
+      </tr>
+      <tr>
+        <td>![Bild einer Sonne](http://www.vitamin-d3-experte.com/wp-content/uploads/2013/05/Sonne-300x300.jpg) <br>
+          (Stellt ein Bild dar. ACHTUNG: Formatierung ist wichtig!)
+        <td><img src=http://www.vitamin-d3-experte.com/wp-content/uploads/2013/05/Sonne-300x300.jpg alt="Bild einer Sonne">
+      </tr>
+    </tbody>
+  </table>
+  <hr>
 {% endblock %}

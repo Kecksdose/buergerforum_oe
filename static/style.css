@@ -1,8 +1,10 @@
+img[alt=bild]
+    { width: 242px;
+      height: 200px}
 
-.image { width: 242px;
-         height: 200px}
-
-.form-buttons {display: inline-block;}
+.form-buttons {
+  display: inline-block;
+}
 
 .jumbotron {
     margin-bottom: 20px;
@@ -20,4 +22,9 @@
 
 .no-wrap {
     white-space: nowrap;
+}
+
+.main-image{
+  height: 300px;
+  width: 500px;
 }

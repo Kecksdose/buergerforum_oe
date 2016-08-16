@@ -48,6 +48,7 @@ def addpost():
                             {'$set': {'headline': form.headline.data,
                                       'content': form.content.data,
                                       'author': form.author.data,
+                                      'main_image': form.main_image.data,
                                       'modified':
                                       datetime.datetime.now()}})
             session['post_id'] = None
@@ -55,6 +56,7 @@ def addpost():
             post.insert({'headline': form.headline.data,
                          'content': form.content.data,
                          'author': form.author.data,
+                         'main_image': form.main_image.data,
                          'created': datetime.datetime.now()})
         return redirect('/')
     elif session.get('post_id') is not None:
@@ -63,6 +65,7 @@ def addpost():
         form.headline.data = cur_post['headline']
         form.content.data = cur_post['content']
         form.author.data = cur_post['author']
+        form.main_image.data = cur_post['main_image']
     flash(form.errors)
     return render_template('addpost.html',
                            form=form)

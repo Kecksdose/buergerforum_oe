@@ -11,6 +11,7 @@ class PostForm(Form):
                             [Required(), Length(min=0, max=3000)])
     author = StringField('Autor',
                          [Required(), Length(min=0, max=50)])
+    main_image = StringField('Anzeigebild', [URL()])
 
 class RegisterAndLogin(Form):
     username = StringField('Benutzername', [Required()])

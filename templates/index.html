@@ -32,6 +32,13 @@
       {% endif %}
     </div>
     <div class="panel-body">
+      <center>
+        {% if post.main_image %}
+          <img src={{post.main_image}} class="img-thumbnail main-image" alt="Bürgerforum OE Logo">
+        {% else %}
+          <img src="/static/images/buergerforum_logo_3.pdf" class="img-thumbnail main-image" alt="Bürgerforum OE Logo">
+        {% endif %}
+      </center>
       <td>{{ post.content|markdown }}</td>
       <hr>
       <em>Von:</em> {{ post.author }}, {{ post.created.strftime("%d.%m.%y um %H:%M Uhr") }}
