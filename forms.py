@@ -1,7 +1,7 @@
 from flask_wtf import Form
 from wtforms import (TextAreaField, StringField)
 from flask_pagedown.fields import PageDownField
-from wtforms.validators import (Length, Required)
+from wtforms.validators import (Length, Required, URL)
 
 
 class PostForm(Form):
