@@ -1,6 +1,9 @@
-img[alt=bild]
-    { width: 242px;
-      height: 200px}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
 
 .form-buttons {
   display: inline-block;
@@ -27,4 +30,72 @@ img[alt=bild]
 .main-image{
   height: 225px;
   width: 400px;
+}
+
+
+.navbar-red {
+  background-color: #f2dede;
+  border-color: #c0392b;
+}
+.navbar-red .navbar-brand {
+  color: #a94442;
+}
+.navbar-red .navbar-brand:hover,
+.navbar-red .navbar-brand:focus {
+  color: #FFFFFF;
+}
+.navbar-red .navbar-text {
+  color: #a94442;
+}
+.navbar-red .navbar-nav > li > a {
+  color: #a94442;
+}
+
+.navbar-red .navbar-nav > .active > a,
+.navbar-red .navbar-nav > .active > a:hover,
+.navbar-red .navbar-nav > .active > a:focus {
+  color: #FFFFFF;
+  background-color: #c0392b;
+}
+.navbar-red .navbar-nav > .open > a,
+.navbar-red .navbar-nav > .open > a:hover,
+.navbar-red .navbar-nav > .open > a:focus {
+  color: #FFFFFF;
+  background-color: #c0392b;
+}
+.navbar-red .navbar-toggle {
+  border-color: #c0392b;
+}
+.navbar-red .navbar-toggle:hover,
+.navbar-red .navbar-toggle:focus {
+  background-color: #c0392b;
+}
+.navbar-red .navbar-toggle .icon-bar {
+  background-color: #a94442;
+}
+.navbar-red .navbar-collapse,
+.navbar-red .navbar-form {
+  border-color: #a94442;
+}
+.navbar-red .navbar-link {
+  color: #a94442;
+}
+.navbar-red .navbar-link:hover {
+  color: #FFFFFF;
+}
+
+@media (max-width: 767px) {
+  .navbar-red .navbar-nav .open .dropdown-menu > li > a {
+    color: #a94442;
+  }
+  .navbar-red .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-red .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #FFFFFF;
+  }
+  .navbar-red .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-red .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-red .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #FFFFFF;
+    background-color: #c0392b;
+  }
 }

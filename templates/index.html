@@ -34,9 +34,9 @@
     <div class="panel-body">
       <center>
         {% if post.main_image %}
-          <img src={{post.main_image}} class="img-thumbnail main-image" alt="Bürgerforum OE Logo">
+          <img src={{post.main_image}} class="img-thumbnail img-responsive main-image" alt="Bürgerforum OE Logo">
         {% else %}
-          <img src="/static/images/buergerforum_logo_4.pdf" class="img-thumbnail main-image" alt="Bürgerforum OE Logo">
+          <img src="/static/images/buergerforum_logo_4.pdf" class="img-thumbnail img-responsive main-image" alt="Bürgerforum OE Logo">
         {% endif %}
       </center>
       <td>{{ post.content|markdown }}</td>
