@@ -5,6 +5,11 @@ img {
   margin: 0 auto;
 }
 
+div {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .form-buttons {
   display: inline-block;
 }
@@ -31,7 +36,6 @@ img {
   height: 225px;
   width: 400px;
 }
-
 
 .navbar-red {
   background-color: #f2dede;
